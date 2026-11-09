@@ -1,3 +1,5 @@
+import { PRODUIT_OUVERT, LIEN_PAIEMENT } from "./config";
+
 const ACCES = "#acces";
 
 function Bouton({ className = "" }: { className?: string }) {
@@ -65,20 +67,25 @@ export default function Accueil() {
 
       <section id="acces" className="scroll-mt-4 bg-white px-5 py-12">
         <div className="mx-auto max-w-3xl">
-          <h2 className="font-titre text-4xl font-bold text-bleu">Accès fondateur</h2>
-          <p className="mt-3">
-            Standard est en cours de finalisation. Les premiers artisans qui le rejoignent y accèdent dès l’ouverture,
-            prévue sous 7 jours, et gardent ce tarif.
-          </p>
-          <p className="mt-6 font-titre text-6xl font-extrabold text-bleu">29 € <span className="text-2xl font-bold">par mois</span></p>
-          <p className="text-base">Soit environ 1 € par jour.</p>
-          <ul className="mt-5 space-y-2">
-            <li><strong>Satisfait ou remboursé 30 jours.</strong> Écrivez-nous, nous vous remboursons sous 5 jours ouvrés.</li>
-            <li><strong>Sans engagement</strong>, résiliable à tout moment.</li>
-          </ul>
-          <p className="mt-6 border-2 border-dashed border-bleu/40 p-4 text-base">
-            [Le bouton de paiement sera branché ici à l’étape suivante.]
-          </p>
+          {PRODUIT_OUVERT ? (
+            <>
+              <h2 className="font-titre text-4xl font-bold text-bleu">Standard, votre abonnement</h2>
+              <p className="mt-6 font-titre text-6xl font-extrabold text-bleu">29 € <span className="text-2xl font-bold">par mois</span></p>
+              <p className="text-base">Soit environ 1 € par jour.</p>
+              <ul className="mt-5 space-y-2">
+                <li><strong>Satisfait ou remboursé 30 jours.</strong> Écrivez-nous, nous vous remboursons sous 5 jours ouvrés.</li>
+                <li><strong>Sans engagement</strong>, résiliable à tout moment.</li>
+              </ul>
+              <a href={LIEN_PAIEMENT} className="mt-6 inline-flex min-h-14 w-full items-center justify-center bg-jaune px-6 py-3 font-titre text-2xl font-bold text-bleu md:w-auto">
+                S’abonner, 29 € par mois
+              </a>
+            </>
+          ) : (
+            <>
+              <h2 className="font-titre text-4xl font-bold text-bleu">Standard ouvre bientôt</h2>
+              <p className="mt-3">Standard est en cours de finalisation. L’inscription n’est pas encore ouverte.</p>
+            </>
+          )}
         </div>
       </section>
 
